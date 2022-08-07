@@ -2,10 +2,20 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Post;
+use App\Models\Reply;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Comment extends Model
 {
     use HasFactory;
+
+    public function post() {
+        return $this->belongsTo(Post::class);
+    }
+
+    public function getReplies() {
+        return $this->hasMany(Reply::class);
+    }
 }
